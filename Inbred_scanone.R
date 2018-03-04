@@ -81,7 +81,11 @@ out.fq_12 <- fitqtl(morphdataIM_sim, qtl=qtl_12, get.ests=TRUE, pheno.col=2, for
 out.fq_12
 
 #Calculate 1.5-LOD drop confidence interval for QTLs
-lodint(traitstepwise_2, drop=1.5, qtl.index=1, lodcolumn=1)
+lodint(traitstepwise_11, drop=1.5, qtl.index=1, lodcolumn=1)
 
-#Visualizing the effects for epistatic interactions
-effectplot(morph_data, pheno.col=12, mname1="2@65", mname2="7@83.1")
+#Visualizing the effects for one locus
+effectplot(dataIM, pheno.col=11, mname1="1@83")
+
+#Visualizing the effects for epistatic interactions for two loci
+effectplot(dataIM, pheno.col=12, mname1="2@65", mname2="7@83.1")
+
