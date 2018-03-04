@@ -53,20 +53,25 @@ while(i<=12){maxlod2delta <- scantwo(dataIM, pheno.col=i, addcov=x, model=c("nor
 method=c("hk"), batchsize=100, n.cluster=6, n.perm=1000);pen <-calc.penalties(maxlod2delta); 
 print(i); print(pen); i<-i+1}
  
-#Stepwise QTL using penalties from scantwo permutations
-traitstepwise_2 <- stepwiseqtl(dataIM, pheno.col=2, max.qtl=6, method="hk", 
-penalties=c(3.964035, 6.576424, 4.336440), keeplodprofile=TRUE, keeptrace=TRUE)
+#Stepwise QTL using penalties from scantwo permutations for example of totally additive QTLs 
+traitstepwise_11 <- stepwiseqtl(dataIM, pheno.col=11, max.qtl=6, method="hk", penalties=c(3.616570, 5.901286, 3.427231), keeplodprofile=TRUE, keeptrace=TRUE)
+plotLodProfile(traitstepwise_11)
+plotModel(traitstepwise_11)
+summary(traitstepwise_11)
 
-plotLodProfile(traitstepwise_2)
-plotModel(traitstepwise_2)
-summary(traitstepwise_2)
+#Stepwise QTL using penalties from scantwo permutations for example of epistatic QTLs. 
+traitstepwise_12 <- stepwiseqtl(dataIM, pheno.col=12, max.qtl=6, method="hk", penalties=c(3.631443, 6.495896, 4.187875), keeplodprofile=TRUE, keeptrace=TRUE)
+
+plotLodProfile(traitstepwise_12)
+plotModel(traitstepwise_12)
+summary(traitstepwise_12)
 
 #Calculation of lod scores, variance explained, additive effects, and dominance deviation from best fit stepwise model
 morphdataIM_sim <- sim.geno(data, step=1, n.draws=128, err=0.001)
-qtl_2 <- makeqtl(morphdataIM_sim, chr=c(2,3,5,7), pos=c(48,83,65,58))
-qtl_2
-out.fq_2 <- fitqtl(morphdataIM_sim, qtl=qtl_2, get.ests=TRUE, pheno.col=2, formula=y ~ Q1 + Q2 + Q3 + Q4 + Q1:Q4)
-out.fq_2
+qtl_12 <- makeqtl(morphdataIM_sim, chr=c(2,7,7), pos=c(65,29,83.1))
+qtl_12
+out.fq_12 <- fitqtl(morphdataIM_sim, qtl=qtl_12, get.ests=TRUE, pheno.col=2, formula=y ~ Q1 + Q2 + Q3 + Q1:Q3)
+out.fq_12
 
 #Calculate 1.5-LOD drop confidence interval for QTLs
 lodint(traitstepwise_2, drop=1.5, qtl.index=1, lodcolumn=1)
