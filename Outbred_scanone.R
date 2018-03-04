@@ -1,4 +1,4 @@
-#rQTL script for analyzing an outbred 4-way mapping population data
+#rQTL script for analyzing an outbred mapping population data
 
 library(qtl)
 
