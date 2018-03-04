@@ -11,7 +11,7 @@ phenotypes measured in the FIL2xHAL2-11 F2 mapping population
 library(qtl)
 
 #Read in data
-data <- read.cross("csv", ".", "Rqtl_hallii.csv")
+data <- read.cross("csv", ".", "Hallii_Rqtl.csv")
 
 #Seperating markers that are in the same location
 data<-jittermap(data)
