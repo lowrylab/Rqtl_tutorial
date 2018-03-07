@@ -63,7 +63,7 @@ summary(traitstepwise_11)
 morphdataIM_sim <- sim.geno(data, step=1, n.draws=128, err=0.001)
 qtl_11 <- makeqtl(morphdataIM_sim, chr=c(1,2,3,7,9), pos=c(83,152,14,26,19))
 qtl_11
-out.fq_11 <- fitqtl(morphdataIM_sim, qtl=qtl_11, get.ests=TRUE, pheno.col=2, formula=y ~ Q1 + Q2 + Q3 + Q4 + Q5)
+out.fq_11 <- fitqtl(morphdataIM_sim, qtl=qtl_11, get.ests=TRUE, pheno.col=11, formula=y ~ Q1 + Q2 + Q3 + Q4 + Q5)
 out.fq_11
 
 #Stepwise QTL using penalties from scantwo permutations for example of epistatic QTLs. 
